@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Per Te ♥</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: #08070c;
+            background: radial-gradient(circle at top, #1a0f2e 0%, #08070c 70%);
+            color: #e2e8f0;
+            min-height: 100vh;
+            padding: 50px 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* SFONDO ANIMATO - CUORI FLUTTUANTI */
+        .hearts-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+        .heart {
+            position: absolute;
+            color: rgba(255, 77, 109, 0.2);
+            font-size: 20px;
+            animation: floatUp 12s infinite linear;
+            bottom: -50px;
+        }
+
+        .heart:nth-child(1) { left: 10%; animation-duration: 8s; animation-delay: 0s; font-size: 16px; }
+        .heart:nth-child(2) { left: 25%; animation-duration: 12s; animation-delay: 2s; font-size: 24px; }
+        .heart:nth-child(3) { left: 45%; animation-duration: 10s; animation-delay: 4s; font-size: 18px; }
+        .heart:nth-child(4) { left: 70%; animation-duration: 14s; animation-delay: 1s; font-size: 22px; }
+        .heart:nth-child(5) { left: 85%; animation-duration: 9s; animation-delay: 3s; font-size: 15px; }
+
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.4;
+            }
+            90% {
+                opacity: 0.4;
+            }
+            100% {
+                transform: translateY(-115vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        /* SCHEDA PRINCIPALE */
+        .card-container {
+            max-width: 680px;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.02);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            border-radius: 28px;
+            padding: 45px 35px;
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+            position: relative;
+            z-index: 1;
+        }
+
+        /* INTESTAZIONE */
+        .header {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .header h1 {
+            font-size: 2.8rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            color: #ffffff;
+            margin-bottom: 6px;
+        }
+
+        .header h1 span {
+            color: #ff4d6d;
+            display: inline-block;
+            animation: pulse 2s infinite ease-in-out;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+        }
+
+        .date {
+            font-size: 0.85rem;
+            color: #8b9bb4;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .banner {
+            text-align: center;
+            background: rgba(255, 77, 109, 0.08);
+            border: 1px solid rgba(255, 77, 109, 0.18);
+            color: #ff85a1;
+            padding: 14px;
+            border-radius: 14px;
+            margin-bottom: 40px;
+            font-size: 0.95rem;
+            font-weight: 400;
+        }
+
+        /* TITOLI SEZIONE */
+        .section-label {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.05rem;
+            color: #a0aec0;
+            margin: 35px 0 20px 0;
+            font-weight: 600;
+        }
+
+        .section-label::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        /* MESSAGGI */
+        .message-box {
+            background: rgba(255, 255, 255, 0.025);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 18px;
+            padding: 22px;
+            margin-bottom: 18px;
+            transition: all 0.3s ease;
+        }
+
+        .message-box:hover {
+            transform: translateY(-3px);
+            background: rgba(255, 255, 255, 0.04);
+            border-color: rgba(255, 77, 109, 0.3);
+            box-shadow: 0 10px 25px rgba(255, 77, 109, 0.05);
+        }
+
+        .message-box p {
+            color: #e2e8f0;
+            line-height: 1.7;
+            font-style: italic;
+            font-size: 0.95rem;
+        }
+
+        .pink-heart {
+            color: #ff4d6d;
+            font-style: normal;
+            margin-right: 6px;
+        }
+
+        /* SEZIONE PERSONALIZZATA */
+        .personal-list {
+            display: flex;
+            flex-direction: column;
+            gap: 14px;
+        }
+
+        .personal-item {
+            background: rgba(255, 255, 255, 0.015);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            padding: 16px 20px;
+            border-radius: 14px;
+            font-size: 0.95rem;
+            color: #cbd5e1;
+        }
+
+        .highlight {
+            color: #ff758f;
+            font-weight: 600;
+        }
+
+        /* PIÈ DI PAGINA */
+        .footer-ps {
+            margin-top: 35px;
+            padding: 15px;
+            text-align: center;
+            font-size: 0.85rem;
+            color: #718096;
+            font-style: italic;
+        }
+
+        .footer-final {
+            text-align: center;
+            margin-top: 25px;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            color: #a0aec0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="hearts-container">
+        <div class="heart">♥</div>
+        <div class="heart">♥</div>
+        <div class="heart">♥</div>
+        <div class="heart">♥</div>
+        <div class="heart">♥</div>
+    </div>
+
+    <div class="card-container">
+        
+        <div class="header">
+            <h1><span>♥</span> per te <span>♥</span></h1>
+            <div class="date">Oggi & Per Sempre</div>
+        </div>
+
+        <div class="banner">
+            <span class="pink-heart">♥</span> grazie per ogni singola parola che mi regali ogni giorno <span class="pink-heart">♥</span>
+        </div>
+
+        <div class="section-label">
+            <span>✧ i tuoi messaggi più belli</span>
+        </div>
+
+        <div class="message-box">
+            <p><span class="pink-heart">♥</span> "Mi fai sentire unica in qualsiasi momento, mi fai sentire sempre capita ed è la prima volta che qualcuno tiene davvero così tanto a me."</p>
+        </div>
+
+        <div class="message-box">
+            <p><span class="pink-heart">♥</span> "Non so neanche trovare le parole giuste per spiegarti quanto ti amo e quanto tu sia speciale, ma sappi che mi rendi infinitamente felice."</p>
+        </div>
+
+        <div class="message-box">
+            <p><span class="pink-heart">♥</span> "Hai un carattere pazzesco, mi fai ridere come nessun altro e sono troppo grata di averti nella mia vita."</p>
+        </div>
+
+        <div class="message-box">
+            <p><span class="pink-heart">♥</span> "Je t'aime, Ich liebe dich, I love you... in ogni lingua possibile, sempre e comunque."</p>
+        </div>
+
+        <div class="section-label">
+            <span>✧ e io, invece...</span>
+        </div>
+
+        <div class="personal-list">
+            <div class="personal-item">
+                <span class="pink-heart">♥</span> Ti ringrazio per ogni <span class="highlight">"ti amo"</span> che mi hai scritto.
+            </div>
+            <div class="personal-item">
+                <span class="pink-heart">♥</span> Per come sai farmi sentire <span class="highlight">speciale</span>, <span class="highlight">unico</span> e fortunato.
+            </div>
+            <div class="personal-item">
+                <span class="pink-heart">♥</span> Per tutte le volte che mi hai fatto sorridere anche nei momenti no.
+            </div>
+            <div class="personal-item">
+                <span class="pink-heart">♥</span> <span class="highlight">Ti amo</span> – e continuerò a dirtelo ogni giorno.
+            </div>
+        </div>
+
+        <div class="footer-ps">
+            <span class="pink-heart">♥</span> P.S. Ho dovuto fare una selezione, altrimenti questa pagina sarebbe stata infinita.
+        </div>
+
+        <div class="footer-final">
+            <span class="pink-heart">♥</span> per sempre, anche a distanza <span class="pink-heart">♥</span>
+        </div>
+
+    </div>
+
+</body>
+</html>
